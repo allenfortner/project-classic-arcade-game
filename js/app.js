@@ -2,6 +2,7 @@
 var Enemy = function(x, y) {
     this.x = x;
 	this.y = y + 55;
+	this.boundary = 505;
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -11,6 +12,12 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+	
+	if (this.x < this.boundary) {
+		this.x += 200 * dt;
+	} else {
+		this.x = -101;
+	}
 };
 
 // Draw the enemy on the screen, required method for game
@@ -51,9 +58,9 @@ class Player {
 }
 
 const player = new Player();
-const enemy1 = new Enemy(0, 0);
+const enemy1 = new Enemy(-101, 0);
 const enemy2 = new Enemy(0, 83);
-const enemy3 = new Enemy(0, 166)
+const enemy3 = new Enemy(101, 166)
 const allEnemies = [];
 allEnemies.push(enemy1, enemy2, enemy3);
 
