@@ -73,22 +73,27 @@ class Player {
 	update() {
 		//Player-enemy collision
 		for (let enemy of allEnemies) {
-			if (this.y === enemy.y && (enemy.x + 101/1.5 > this.x && enemy.x < this.x + 101/1.5)) {
+			if (this.y === enemy.y && (enemy.x + 101/1.75 > this.x && enemy.x < this.x + 101/1.75)) {
 				gameReset();
 			}
 		}
 	}
 }
 
+//The following code allows certain enemies (in this case, enemy4) to spawn in a random row each time the game starts
+let enemyRows = [0, 83, 166]; //Rows with enemies
+let randomRow = enemyRows[Math.floor(Math.random() * enemyRows.length)];
+
 //Initialize player & enemy objects
 let player = new Player();
-let enemy1 = new Enemy(-101, 0, 150);
-let enemy2 = new Enemy(0, 83, 200);
-let enemy3 = new Enemy(101, 166, 300)
+let enemy1 = new Enemy(-101, 0, 425);
+let enemy2 = new Enemy(0, 83, 300);
+let enemy3 = new Enemy(404, 166, 350)
+let enemy4 = new Enemy(202, randomRow, 250);
 
 //Store enemy instances inside allEnemies array
 let allEnemies = [];
-allEnemies.push(enemy1, enemy2, enemy3);
+allEnemies.push(enemy1, enemy2, enemy3, enemy4);
 
 //Reset the game when gameReset is called
 function gameReset() {
@@ -97,10 +102,11 @@ function gameReset() {
 	player.y = player.startingY;
 	//Clear all enemy instances and create new ones
 	allEnemies.length = 0;
-	enemy1 = new Enemy(-101, 0, 150);
-	enemy2 = new Enemy(0, 83, 200);
-	enemy3 = new Enemy(101, 166, 300)
-	allEnemies.push(enemy1, enemy2, enemy3);
+	enemy1 = new Enemy(-101, 0, 425);
+	enemy2 = new Enemy(0, 83, 300);
+	enemy3 = new Enemy(404, 166, 350)
+	enemy4 = new Enemy(202, randomRow, 250);
+	allEnemies.push(enemy1, enemy2, enemy3, enemy4);
 }
 
 
