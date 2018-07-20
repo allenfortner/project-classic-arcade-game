@@ -33,7 +33,7 @@ class Player {
 	constructor() {
 		this.sprite = 'images/char-boy.png';
 		this.startingX = 202;
-		this.startingY = 415 - 25;
+		this.startingY = 332 + 55;
 		this.x = this.startingX;
 		this.y = this.startingY;
 	}
@@ -58,20 +58,37 @@ class Player {
 				}
 				break;
 			case 'down':
-				if (this.y < 390) {
+				if (this.y < 387) {
 					this.y += 83;
 				}
 				break;
 		}
 	}
+	update() {
+		for (let enemy of allEnemies) {
+			if (this.y === enemy.y && (enemy.x + 101/1.5 > this.x && enemy.x < this.x + 101/1.5)) {
+				gameReset();
+			}
+		}
+	}
 }
 
-const player = new Player();
-const enemy1 = new Enemy(-101, 0, 150);
-const enemy2 = new Enemy(0, 83, 200);
-const enemy3 = new Enemy(101, 166, 300)
-const allEnemies = [];
+let player = new Player();
+let enemy1 = new Enemy(-101, 0, 150);
+let enemy2 = new Enemy(0, 83, 200);
+let enemy3 = new Enemy(101, 166, 300)
+let allEnemies = [];
 allEnemies.push(enemy1, enemy2, enemy3);
+
+function gameReset() {
+	player.x = player.startingX;
+	player.y = player.startingY;
+	allEnemies.length = 0;
+	enemy1 = new Enemy(-101, 0, 150);
+	enemy2 = new Enemy(0, 83, 200);
+	enemy3 = new Enemy(101, 166, 300)
+	allEnemies.push(enemy1, enemy2, enemy3);
+}
 
 
 // This listens for key presses and sends the keys to your
