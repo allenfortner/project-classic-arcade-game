@@ -42,16 +42,24 @@ class Player {
 	handleInput(input) {
 		switch(input) {
 			case 'left':
-				this.x -= 101;
+				if (this.x > 0) {
+					this.x -= 101;
+				}
 				break;
 			case 'right':
-				this.x += 101;
+				if (this.x < 404) {
+					this.x += 101;
+				}
 				break;
 			case 'up':
-				this.y -= 83;
+				if (this.y > 58) {
+					this.y -= 83;
+				}
 				break;
 			case 'down':
-				this.y += 83;
+				if (this.y < 390) {
+					this.y += 83;
+				}
 				break;
 		}
 	}
