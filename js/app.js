@@ -53,7 +53,10 @@ class Player {
 				}
 				break;
 			case 'up':
-				if (this.y > 58) {
+				if (this.y === 55) {
+					alert("You win!");
+					gameReset();
+				} else if (this.y > 55) {
 					this.y -= 83;
 				}
 				break;
