@@ -27,8 +27,10 @@ Enemy.prototype.render = function() {
 class Player {
 	constructor() {
 		this.sprite = 'images/char-boy.png';
-		this.x = 0;
-		this.y = 0;
+		this.startingX = 202;
+		this.startingY = 415;
+		this.x = this.startingX;
+		this.y = this.startingY;
 	}
 	render() {
 		ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
