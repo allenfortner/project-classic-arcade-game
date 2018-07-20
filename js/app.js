@@ -1,7 +1,7 @@
 // Enemies our player must avoid
-var Enemy = function(xPos, yPos) {
-    this.x = xPos;
-	this.y = yPos;
+var Enemy = function(x, y) {
+    this.x = x;
+	this.y = y + 55;
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -51,9 +51,11 @@ class Player {
 }
 
 const player = new Player();
-const enemy1 = new Enemy(0, 55);
+const enemy1 = new Enemy(0, 0);
+const enemy2 = new Enemy(0, 83);
+const enemy3 = new Enemy(0, 166)
 const allEnemies = [];
-allEnemies.push(enemy1);
+allEnemies.push(enemy1, enemy2, enemy3);
 
 
 // This listens for key presses and sends the keys to your
