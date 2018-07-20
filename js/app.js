@@ -14,6 +14,7 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 	
+	//Enemy keeps moving until it hits the boundary, then its position resets and keeps moving
 	if (this.x < this.boundary) {
 		this.x += (this.speed * dt);
 	} else {
@@ -32,8 +33,10 @@ Enemy.prototype.render = function() {
 class Player {
 	constructor() {
 		this.sprite = 'images/char-boy.png';
+		//Player's X and Y positions when game starts
 		this.startingX = 202;
 		this.startingY = 332 + 55;
+		//Set player position to starting position
 		this.x = this.startingX;
 		this.y = this.startingY;
 	}
@@ -54,7 +57,7 @@ class Player {
 				break;
 			case 'up':
 				if (this.y === 55) {
-					alert("You win!");
+					alert("You win!"); //Good job!
 					gameReset();
 				} else if (this.y > 55) {
 					this.y -= 83;
@@ -68,6 +71,7 @@ class Player {
 		}
 	}
 	update() {
+		//Player-enemy collision
 		for (let enemy of allEnemies) {
 			if (this.y === enemy.y && (enemy.x + 101/1.5 > this.x && enemy.x < this.x + 101/1.5)) {
 				gameReset();
@@ -76,16 +80,22 @@ class Player {
 	}
 }
 
+//Initialize player & enemy objects
 let player = new Player();
 let enemy1 = new Enemy(-101, 0, 150);
 let enemy2 = new Enemy(0, 83, 200);
 let enemy3 = new Enemy(101, 166, 300)
+
+//Store enemy instances inside allEnemies array
 let allEnemies = [];
 allEnemies.push(enemy1, enemy2, enemy3);
 
+//Reset the game when gameReset is called
 function gameReset() {
+	//Reset player's position
 	player.x = player.startingX;
 	player.y = player.startingY;
+	//Clear all enemy instances and create new ones
 	allEnemies.length = 0;
 	enemy1 = new Enemy(-101, 0, 150);
 	enemy2 = new Enemy(0, 83, 200);
