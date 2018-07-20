@@ -25,7 +25,7 @@ class Player {
 	constructor() {
 		this.sprite = 'images/char-boy.png';
 		this.startingX = 202;
-		this.startingY = 415;
+		this.startingY = 415 - 25;
 		this.x = this.startingX;
 		this.y = this.startingY;
 	}
