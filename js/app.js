@@ -1,7 +1,8 @@
 // Enemies our player must avoid
-var Enemy = function(x, y) {
+var Enemy = function(x, y, speed) {
     this.x = x;
 	this.y = y + 55;
+	this.speed = speed;
 	this.boundary = 505;
     this.sprite = 'images/enemy-bug.png';
 };
@@ -14,7 +15,7 @@ Enemy.prototype.update = function(dt) {
     // all computers.
 	
 	if (this.x < this.boundary) {
-		this.x += 200 * dt;
+		this.x += (this.speed * dt);
 	} else {
 		this.x = -101;
 	}
@@ -66,9 +67,9 @@ class Player {
 }
 
 const player = new Player();
-const enemy1 = new Enemy(-101, 0);
-const enemy2 = new Enemy(0, 83);
-const enemy3 = new Enemy(101, 166)
+const enemy1 = new Enemy(-101, 0, 150);
+const enemy2 = new Enemy(0, 83, 200);
+const enemy3 = new Enemy(101, 166, 300)
 const allEnemies = [];
 allEnemies.push(enemy1, enemy2, enemy3);
 
